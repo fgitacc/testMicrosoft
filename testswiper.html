@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <link href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="./css/main.css" rel="stylesheet">
+    <script>
+        var cont = 0;
+        function loopSlider() {
+            var xx = setInterval(function () {
+                switch (cont) {
+                    case 0: {
+                        $("#slider-1").fadeOut(400);
+                        $("#slider-2").delay(400).fadeIn(400);
+                        $("#sButton1").removeClass("bg-purple-800");
+                        $("#sButton2").addClass("bg-purple-800");
+                        cont = 1;
+                        break;
+                    }
+                    case 1:
+                        {
+                            $("#slider-2").fadeOut(400);
+                            $("#slider-1").delay(400).fadeIn(400);
+                            $("#sButton2").removeClass("bg-purple-800");
+                            $("#sButton1").addClass("bg-purple-800");
+                            cont = 0;
+                            break;
+                        }
+                }
+
+
+            }, 8000);
+        }
+        function loopSliderB() {
+            var xx = setInterval(function () {
+                switch (cont) {
+                    case 0: {
+                        $("#slider-b1").fadeOut(400);
+                        $("#slider-b2").delay(400).fadeIn(400);
+                        $("#sButtonb1").removeClass("bg-purple-800");
+                        $("#sButtonb2").addClass("bg-purple-800");
+                        cont = 1;
+                        break;
+                    }
+                    case 1:
+                        {
+                            $("#slider-b2").fadeOut(400);
+                            $("#slider-b1").delay(400).fadeIn(400);
+                            $("#sButtonb2").removeClass("bg-purple-800");
+                            $("#sButtonb1").addClass("bg-purple-800");
+                            cont = 0;
+                            break;
+                        }
+                }
+
+
+            }, 8000);
+        }
+        function reinitLoop(time, sliderName) {
+            clearInterval(xx);
+            if (sliderName === 'A') {
+                setTimeout(loopSlider(), time);
+            } else {
+                setTimeout(loopSliderB(), time);
+            }
+
+        }
+
+
+
+        function sliderButton1(sliderName) {
+            if (sliderName === 'A') {
+                $("#slider-2").fadeOut(400);
+                $("#slider-1").delay(400).fadeIn(400);
+                $("#sButton2").removeClass("bg-purple-800");
+                $("#sButton1").addClass("bg-purple-800");
+                reinitLoop(4000, 'A');
+                cont = 0
+            } else {
+                $("#slider-b2").fadeOut(400);
+                $("#slider-b1").delay(400).fadeIn(400);
+                $("#sButtonb2").removeClass("bg-purple-800");
+                $("#sButtonb1").addClass("bg-purple-800");
+                reinitLoop(4000, 'B');
+                cont = 0
+            }
+
+
+        }
+
+        function sliderButton2(sliderName) {
+            if (sliderName === 'A') {
+                $("#slider-1").fadeOut(400);
+                $("#slider-2").delay(400).fadeIn(400);
+                $("#sButton1").removeClass("bg-purple-800");
+                $("#sButton2").addClass("bg-purple-800");
+                reinitLoop(4000, 'A');
+                cont = 1
+            } else {
+                $("#slider-b1").fadeOut(400);
+                $("#slider-b2").delay(400).fadeIn(400);
+                $("#sButtonb1").removeClass("bg-purple-800");
+                $("#sButtonb2").addClass("bg-purple-800");
+                reinitLoop(4000, 'B');
+                cont = 1
+            }
+
+
+        }
+
+        $(window).ready(function () {
+            $("#slider-2").hide();
+            $("#sButton1").addClass("bg-purple-800");
+            $("#slider-b2").hide();
+            $("#sButtonb1").addClass("bg-purple-800");
+
+            loopSlider();
+        });
+
+
+    </script>
+    <script src="./node_modules/flowbite/dist/flowbite.min.css"></script>
+
+</head>
+
+<body>
+    <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 relative">
+        <div class="flex flex-wrap lg:justify-between items-center mx-auto max-w-screen-xl p-3">
+            <button data-collapse-toggle="mega-menu-full" type="button"
+                class=" inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="mega-menu-full" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+            <!-- microsoft logo -->
+            <a href="#" class="bg-red-600  flex items-center">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white inline-block">
+                    <img src="./icon/RE1Mu3b.png" class="w-[108px] h-[23px]" alt="">
+                </span>
+            </a>
+            <!-- menu 365 -->
+            <div id="mega-menu-full"
+                class=" items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-0">
+                <ul
+                    class="flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 hover:border-b-2 hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Microsoft365</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 hover:border-b-2 hover:border-b-black md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Teams</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent hover:border-b-2 hover:border-b-black  md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">windows</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent hover:border-b-2 hover:border-b-black md:p-0 dark:text-white  dark:hover:bg-gray-700  md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Surface</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white hover:border-b-2 hover:border-b-black dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Xbox</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white  dark:hover:bg-gray-700 hover:border-b-2 hover:border-b-black  md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Deals</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent hover:border-b-2 hover:border-b-black md:p-0 dark:text-white  dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Small business</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pl-3 pr-4 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white hover:border-b-2 hover:border-b-black dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Support</a>
+                    </li>
+                    <li>
+                        <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown"
+                            class="flex items-center justify-between w-full py-2 pl-3 pr-4  text-gray-900 rounded md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 oncli focus:border-0 ">All
+                            Microsofts
+                            <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg></button>
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+            <!-- search icon -->
+            <a href="#"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"><svg
+                    id="searchBtn" aria-hidden="true"
+                    class=" hover:text-blue-700 w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <div id="searchDiv" class="bg-white ms-56 me-3 py-3 w-4/5 h-14 absolute top-0 left-0 z-10 hidden">
+                    <form>
+                        <label for="default-search"
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        <div class="relative w-full flex flex-row">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-1 pointer-events-none">
+
+                            </div>
+                            <input type="search" id="default-search"
+                                class="block w-full h-8 border-gray-600 p-4 pl-10 text-sm text-gray-900 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Search Microsoft.com" required>
+                            <button type="submit"
+                                class="absolute right-24 bottom-2.5 hover:border-2  hover:border-dashed hover:border-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-2 mx-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-auto h-auto"><svg
+                                    aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg></button>
+
+                            <button type="button" id="cancelBtn"
+                                class=" h-8 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 hover:bg-gradient-to-br focus:outline-none dark:focus:ring-cyan-800 font-medium text-sm px-5 py-1.5 text-center m-2 mt-0">cancel</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </a>
+            <!-- basket icon -->
+            <a href="#"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"><svg
+                    class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+                    </path>
+                </svg>
+            </a>
+            <!-- person icon -->
+            <a href="#"
+                class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"><svg
+                    class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z">
+                    </path>
+                </svg></a>
+        </div>
+        <div id="mega-menu-full-dropdown"
+            class="mx-20 mt-1 border-gray-200 shadow-sm md:bg-white border-y dark:bg-gray-800 dark:border-gray-600 bg-blue-600 border-b-2 border-b-black hidden">
+            <div
+                class="grid bg-gray-200 px-4 py-5 text-gray-900 dark:text-white xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4">
+                <ul class="font-bold">Software
+                    <li>
+                        <a href="#"
+                            class="block mt-3 px-0 py-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                            App
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">AI
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Outlook
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">OneDrive
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Teams
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">OneNote
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Edge
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Skype
+                        </a></li>
+                </ul>
+                <ul class="font-bold">PCs & Devices
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Computers
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Shop
+                            Xbox
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Accessories
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">VR
+                            & mixed
+                            reality
+                        </a></li>
+                </ul>
+                <ul class="font-bold">Entertainment
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Xbox
+                            Game Pass
+                            Ultimate
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">PC
+                            Game Pass
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Xbox
+                            games
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">PC
+                            games
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                            digital games
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Movies
+                            & TV
+                        </a></li>
+                </ul>
+                <ul class="font-bold">Business
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Cloud
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Security
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Dynamics
+                            365
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            365
+                            for business
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Power Platform
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                            365
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Industry
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Small
+                            Business
+                        </a></li>
+                </ul>
+                <ul class="font-bold">Developer & IT
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Azure
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Developer
+                            Center
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Documentation
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Learn
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Tech
+                            Community
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Azure
+                            Marketplace
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">AppSource
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Visual
+                            Studio
+                        </a></li>
+                </ul>
+                <ul class="font-bold">Other
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Rewards
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Free
+                            downloads
+                            & security
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Education
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Trade-in
+                            for
+                            Cash
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Gift
+                            cards
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Students
+                            and
+                            parents deals
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Licensing
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Experience Center
+                        </a></li>
+                </ul>
+            </div>
+            </svg></a>
+            <div class="text-center bg-gray-300 py-2 text-[14px] hover:underline"><a href="#">VIEW SITEMAP<svg
+                        class="inline-block w-5 h-5 text-gray-500 group-hover:pl-2" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg></a></div>
+        </div>
+    </nav>
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script>
+        let megaMenu = document.getElementById("mega-menu-full-dropdown-button")
+        megaMenu.addEventListener("click", function () {
+            if (screen.width >= 576) {
+                document.getElementById("div.mega-menu-full-dropdown").style.display = "block"
+            } else {
+                document.getElementById("div.mega-menu-full-dropdown").style.display = "none"
+            }
+        })
+        let srh = document.getElementById("searchBtn")
+        srh.addEventListener("click", function () {
+            document.getElementById("searchDiv").classList.remove("hidden")
+            document.getElementById("searchDiv").classList.add("block")
+            console.log(searchDiv)
+        })
+    </script>
+    <script>
+        let cnl = document.getElementById("cancelBtn")
+        cnl.addEventListener("click", function () {
+            debugger;
+            document.getElementById("searchDiv").classList.remove("block")
+            console.log(searchDiv)
+            document.getElementById("searchDiv").classList.add("hidden")
+            console.log(searchDiv)
+        })
+    </script>
+
+</body>
+
+</html>

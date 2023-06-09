@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/main.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Ali Microsoft</title>
+    <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+    <script>
+        var cont = 0;
+        function loopSlider() {
+            var xx = setInterval(function () {
+                switch (cont) {
+                    case 0: {
+                        $("#slider-1").fadeOut(400);
+                        $("#slider-2").delay(400).fadeIn(400);
+                        $("#sButton1").removeClass("bg-purple-800");
+                        $("#sButton2").addClass("bg-purple-800");
+                        cont = 1;
+                        break;
+                    }
+                    case 1:
+                        {
+                            $("#slider-2").fadeOut(400);
+                            $("#slider-1").delay(400).fadeIn(400);
+                            $("#sButton2").removeClass("bg-purple-800");
+                            $("#sButton1").addClass("bg-purple-800");
+                            cont = 0;
+                            break;
+                        }
+                }
+
+
+            }, 8000);
+        }
+        function loopSliderB() {
+            var xx = setInterval(function () {
+                switch (cont) {
+                    case 0: {
+                        $("#slider-b1").fadeOut(400);
+                        $("#slider-b2").delay(400).fadeIn(400);
+                        $("#sButtonb1").removeClass("bg-purple-800");
+                        $("#sButtonb2").addClass("bg-purple-800");
+                        cont = 1;
+                        break;
+                    }
+                    case 1:
+                        {
+                            $("#slider-b2").fadeOut(400);
+                            $("#slider-b1").delay(400).fadeIn(400);
+                            $("#sButtonb2").removeClass("bg-purple-800");
+                            $("#sButtonb1").addClass("bg-purple-800");
+                            cont = 0;
+                            break;
+                        }
+                }
+
+
+            }, 8000);
+        }
+        function reinitLoop(time, sliderName) {
+            clearInterval(xx);
+            if (sliderName === 'A') {
+                setTimeout(loopSlider(), time);
+            } else {
+                setTimeout(loopSliderB(), time);
+            }
+
+        }
+        function sliderButton1(sliderName) {
+            if (sliderName === 'A') {
+                $("#slider-2").fadeOut(400);
+                $("#slider-1").delay(400).fadeIn(400);
+                $("#sButton2").removeClass("bg-purple-800");
+                $("#sButton1").addClass("bg-purple-800");
+                reinitLoop(4000, 'A');
+                cont = 0
+            } else {
+                $("#slider-b2").fadeOut(400);
+                $("#slider-b1").delay(400).fadeIn(400);
+                $("#sButtonb2").removeClass("bg-purple-800");
+                $("#sButtonb1").addClass("bg-purple-800");
+                reinitLoop(4000, 'B');
+                cont = 0
+            }
+
+
+        }
+        function sliderButton2(sliderName) {
+            if (sliderName === 'A') {
+                $("#slider-1").fadeOut(400);
+                $("#slider-2").delay(400).fadeIn(400);
+                $("#sButton1").removeClass("bg-purple-800");
+                $("#sButton2").addClass("bg-purple-800");
+                reinitLoop(4000, 'A');
+                cont = 1
+            } else {
+                $("#slider-b1").fadeOut(400);
+                $("#slider-b2").delay(400).fadeIn(400);
+                $("#sButtonb1").removeClass("bg-purple-800");
+                $("#sButtonb2").addClass("bg-purple-800");
+                reinitLoop(4000, 'B');
+                cont = 1
+            }
+        }
+        $(window).ready(function () {
+            $("#slider-2").hide();
+            $("#sButton1").addClass("bg-purple-800");
+            $("#slider-b2").hide();
+            $("#sButtonb1").addClass("bg-purple-800");
+
+            loopSlider();
+        });
+    </script>
+    <script src="./node_modules/flowbite/dist/flowbite.min.css"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 relative w-full h-[60px] py-4">
+        <div class=" bg-white flex flex-wrap justify-around items-center">
+
+            <button data-collapse-toggle="mega-menu-full" type="button" id="menuBtn"
+                class=" text-gray-900 hover:text-blue-500 inline-flex items-center ml-1 text-sm md:hidden focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="mega-menu-full" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6 block" id="menuIcon" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <svg class="w-6 h-6 hidden hover:text-blue-500" id="closeIcon" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none">
+                    <path fill="#000"
+                        d="M7.05 7.05a1 1 0 0 0 0 1.414L10.586 12 7.05 15.536a1 1 0 1 0 1.414 1.414L12 13.414l3.536 3.536a1 1 0 0 0 1.414-1.414L13.414 12l3.536-3.536a1 1 0 0 0-1.414-1.414L12 10.586 8.464 7.05a1 1 0 0 0-1.414 0Z">
+                    </path>
+                </svg>
+            </button>
+            <!-- search icon -->
+            <a href="#"
+                class="block roundedtext-gray-900  md:order-2 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent "><svg
+                    id="searchBtn" aria-hidden="true" class=" hover:text-blue-700 w-5 h-5 dark:text-gray-400"
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                <div id="searchDiv"
+                    class="bg-white py-3 w-[90vw] h-14 absolute top-0 left-[5vw] md:left-[18vw] md:w-[75vw]  z-10 hidden">
+                    <form>
+                        <label for="default-search"
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                        <div class="relative w-full flex flex-row">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-1 pointer-events-none">
+
+                            </div>
+                            <input type="search" id="default-search"
+                                class="block w-full h-8 border-gray-600 p-4 pl-10 text-sm text-gray-900 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Search Microsoft.com" required>
+                            <button type="submit"
+                                class="absolute right-24 bottom-2.5 hover:border-2  hover:border-dashed hover:border-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-2 mx-1.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 w-auto h-auto"><svg
+                                    aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg></button>
+
+                            <button type="button" id="cancelBtn"
+                                class=" h-8 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 hover:bg-gradient-to-br focus:outline-none dark:focus:ring-cyan-800 font-medium text-sm px-5 py-1.5 text-center m-2 mt-0">cancel</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </a>
+            <!-- all microsoft -->
+            <div class="hidden md:block order-1 " id="tt1">
+
+                <button id="mega-menu-full-dropdown-button" data-collapse-toggle="mega-menu-full-dropdown"
+                    class="md:flex md:items-center md:justify-between w-full py-2 text-[14px] font-normal text-gray-900 md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:hover:border-b-2 md:hover:border-b-black md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 focus:outline-none focus:border-0 ">
+                    All Microsofts
+                    <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg></button>
+            </div>
+            <!-- microsoft logo -->
+            <a href="#" class=" flex items-center mx-3">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white inline-block">
+                    <img src="./icon/RE1Mu3b.png" class="w-[108px] h-[23px]" alt="">
+                </span>
+            </a>
+            <div class="flex flex-row md:order-last mr-3">
+                <!-- basket icon -->
+                <a href="#"
+                    class="block mx-2 rounded  text-gray-900 md:hover:bg-transparent md:hover:text-blue-700 p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"><svg
+                        class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z">
+                        </path>
+                    </svg>
+                </a>
+                <!-- person icon -->
+                <a href="#"
+                    class="block mx-2 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"><svg
+                        class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z">
+                        </path>
+                    </svg></a>
+            </div>
+
+            <!-- menu 365 -->
+            <div id="mega-menu-full" class="bg-white z-10 font-medium hidden w-full md:w-auto md:flex md:order-0 ">
+                <ul
+                    class="flex flex-col px-1 md:p-0 mt-4 md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                    <li class=" mx-1 my-auto">
+                        <a href="#"
+                            class="block py-2 text-gray-900 text-[14px] font-normal hover:bg-gray-100 md:hover:border-b-2 md:hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Microsoft365</a>
+                    </li>
+                    <li class=" mx-2 my-auto">
+                        <a href="#"
+                            class="block text-gray-900 text-[14px] font-normal hover:bg-gray-100 md:hover:border-b-2 md:hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Teams</a>
+                    </li>
+                    <li class=" mx-2 my-auto">
+                        <a href="#"
+                            class="block py-2 text-gray-900 text-[14px] font-normal hover:bg-gray-100 md:hover:border-b-2 md:hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">windows</a>
+                    </li>
+                    <li class=" mx-2 my-auto">
+                        <a href="#"
+                            class="block py-2  text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:border-b-2 md:hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Surface</a>
+                    </li>
+                    <li class=" mx-2 my-auto">
+                        <a href="#"
+                            class="block py-2 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:border-b-2 md:hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Xbox</a>
+                    </li>
+                    <li class=" mx-2 my-auto md:hidden  lg:block">
+                        <div class="md:hidden md:w-0 lg:block lg:w-auto ">
+                            <a href="#"
+                                class="block py-2  text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:border-b-2 md:hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                                aria-current="page">Deals</a>
+                        </div>
+                    </li>
+                    <li class=" mx-2 my-auto  md:hidden xl:block">
+
+                        <a href="#"
+                            class="block py-2 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:border-b-2 md:hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                            aria-current="page">Small business</a>
+
+                    </li>
+                    <li class=" mx-2 my-auto md:hidden xl:block">
+                        <div class="md:hidden xl:block">
+                            <a href="#"
+                                class="block py-2 text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:border-b-2 md:hover:border-b-black md:hover:bg-transparent md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                                aria-current="page">Support</a>
+                        </div>
+                    </li>
+                    <li class="hidden md:block xl:hidden p-0 ml-2  md:ml-3">
+                        <ul>
+                            <!-- Dropdown more -->
+                            <button id="multiLevelDropdownButton" data-dropdown-toggle="moreMenu"
+                                class="flex items-center justify-between text-[14px] font-normal text-gray-900 w-full hover:bg-gray-100 md:hover:bg-transparent md:hover:border-b-2 md:hover:border-b-black dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700  focus:border-0  focus:outline-none z-10"
+                                type="button">more <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg></button>
+                            <div id="moreMenu"
+                                class="z-10 hidden bg-white  divide-gray-100 shadow w-44 dark:bg-gray-700">
+                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                    aria-labelledby="multiLevelDropdownButton">
+
+                                    <li class="mx-2 py-2">
+                                        <div class=" block xl:hidden ">
+                                            <a href="#"
+                                                class="text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white  dark:hover:bg-gray-700 hover:underline hover:border-b-black  md:dark:hover:bg-transparent dark:border-gray-700"
+                                                aria-current="page">Support</a>
+                                        </div>
+                                    </li>
+                                    <li class="mx-2 py-2">
+                                        <div class="block xl:hidden">
+                                            <a href="#"
+                                                class="text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white  dark:hover:bg-gray-700 hover:underline hover:border-b-black  md:dark:hover:bg-transparent dark:border-gray-700"
+                                                aria-current="page">Small business</a>
+                                        </div>
+                                    </li>
+                                    <li class="mx-2 py-2">
+                                        <div class="block lg:hidden">
+                                            <a href="#"
+                                                class="text-gray-900 text-[14px] font-normal  hover:bg-gray-100 md:hover:bg-transparent  md:p-0 dark:text-white  dark:hover:bg-gray-700 hover:underline hover:border-b-black  md:dark:hover:bg-transparent dark:border-gray-700"
+                                                aria-current="page">Deals</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </ul>
+                    </li>
+
+                    <li class="md:hidden ml-2">
+                        <button id="software-dropdown-btn"
+                            class="flex items-center justify-between text-[14px] font-normal text-gray-900 py-2 w-full hover:bg-gray-100 md:hover:bg-transparent md:hover:border-b-2 md:hover:border-b-black dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700  focus:border-0  focus:outline-none"
+                            onclick="showOnClick('software-dropdown-btn','software-dropdown-menu')"
+                            type="button">Software
+                            <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg></button>
+                        <!-- software-dropdown -->
+                        <div id="software-dropdown-menu"
+                            class=" hidden bg-white divide-y divide-gray-100 shadow w-full dark:bg-gray-700 pl-2">
+                            <ul class="pb-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefaultButton">
+                                <li>
+                                    <a href="#"
+                                        class="block mt-3 px-0 py-2 text-[14px] font-normal hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                                        App
+                                    </a>
+                                </li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">AI
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Outlook
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">OneDrive
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Teams
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">OneNote
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Edge
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Skype
+                                    </a></li>
+                            </ul>
+                        </div>
+
+
+                    </li>
+                    <li class="md:hidden ml-2">
+                        <button id="pc-dropdown-btn" onclick="showOnClick('pc-dropdown-btn','pc-dropdown-menu')"
+                            class="hover:border-dashed flex items-center justify-between text-[14px] font-normal text-gray-900 py-2 w-full hover:bg-gray-100 md:hover:bg-transparent md:hover:border-b-2 md:hover:border-b-black dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700  focus:border-0  focus:outline-none"
+                            type="button">PCs & Devices <svg class="w-5 h-5 ml-1" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg></button>
+                        <!-- pc-dropdown -->
+                        <div id="pc-dropdown-menu"
+                            class=" hidden bg-white divide-y divide-gray-100 shadow w-full dark:bg-gray-700 pl-2">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefaultButton">
+                                <li>
+                                    <a href="#"
+                                        class="px-0 pb-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Computers
+                                    </a>
+                                </li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Shop
+                                        Xbox
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Accessories
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">
+                                        VR & mixed reality
+                                    </a></li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="md:hidden ml-2">
+                        <button id="Entertainment-dropdown-btn"
+                            onclick="showOnClick('Entertainment-dropdown-btn','Entertainment-dropdown-menu')"
+                            class="flex items-center justify-between w-full py-2 text-[14px] font-normal text-gray-900 md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:hover:border-b-2 md:hover:border-b-black md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 focus:outline-none focus:border-0 ">
+                            Entertainment
+                            <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg></button>
+                        <!-- Entertainment-dropdown -->
+                        <div id="Entertainment-dropdown-menu"
+                            class=" hidden bg-white divide-y divide-gray-100 shadow w-full dark:bg-gray-700 pl-2">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+
+                                <li>
+                                    <a href="#"
+                                        class="px-0 pb-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Xbox
+                                        Game Pass
+                                        Ultimate
+                                    </a>
+                                </li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">PC
+                                        Game Pass
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Xbox
+                                        games
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">PC
+                                        games
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                                        digital games
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Movies
+                                        & TV
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="md:hidden ml-2">
+                        <button id="Business-dropdown-btn"
+                            onclick="showOnClick('Business-dropdown-btn','Business-dropdown-menu')"
+                            class="flex items-center justify-between w-full py-2 text-[14px] font-normal text-gray-900 md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:hover:border-b-2 md:hover:border-b-black md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 focus:outline-none focus:border-0 ">
+                            Business
+                            <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg></button>
+                        <!-- Business-dropdown -->
+                        <div id="Business-dropdown-menu"
+                            class=" hidden bg-white divide-y divide-gray-100 shadow w-full dark:bg-gray-700 pl-2">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                                <li>
+                                    <a href="#"
+                                        class="px-0 pb-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Cloud
+                                    </a>
+                                </li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Security
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Dynamics
+                                        365
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        365
+                                        for business
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Power Platform
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                                        365
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Industry
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Small
+                                        Business
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="md:hidden ml-2">
+                        <button id="Developer-dropdown-btn"
+                            onclick="showOnClick('Developer-dropdown-btn','Developer-dropdown-menu')"
+                            class="flex items-center justify-between w-full py-2 text-[14px] font-normal text-gray-900 md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:hover:border-b-2 md:hover:border-b-black md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 focus:outline-none focus:border-0 ">
+                            Developer & IT
+                            <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg></button>
+                        <!-- Developer-dropdown -->
+                        <div id="Developer-dropdown-menu"
+                            class=" hidden bg-white divide-y divide-gray-100 shadow w-full dark:bg-gray-700 pl-2">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                                <li>
+                                    <a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Azure
+                                    </a>
+                                </li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Developer
+                                        Center
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Documentation
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Learn
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Tech
+                                        Community
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Azure
+                                        Marketplace
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">AppSource
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Visual
+                                        Studio
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="md:hidden ml-2">
+                        <button id="Other-dropdown-btn"
+                            onclick="showOnClick('Other-dropdown-btn','Other-dropdown-menu')"
+                            class="flex items-center justify-between w-full py-2 text-[14px] font-normal text-gray-900 md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0  md:hover:border-b-2 md:hover:border-b-black md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700 focus:outline-none focus:border-0 ">
+                            Other
+                            <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg></button>
+                        <!-- Other-dropdown -->
+                        <div id="Other-dropdown-menu"
+                            class=" hidden bg-white divide-y divide-gray-100 shadow w-full dark:bg-gray-700 pl-2">
+                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+                                <li>
+                                    <a href="#"
+                                        class="px-0 pb-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Rewards
+                                    </a>
+                                </li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Free
+                                        downloads
+                                        & security
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Education
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Trade-in
+                                        for
+                                        Cash
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Gift
+                                        cards
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Students
+                                        and parents deals
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Licensing
+                                    </a></li>
+                                <li><a href="#"
+                                        class="px-0 py-2 text-[14px] font-normal block hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                                        Experience Center
+                                    </a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div id="mega-menu-full-dropdown"
+            class=" mt-1 border-gray-200 shadow-sm md:bg-red-700 border-y dark:bg-gray-800 dark:border-gray-600 md:hover:border-b-2 md:hover:border-b-black hidden z-10 absolute top-[58px] left-[8.33vw] w-5/6 ">
+            <div id="mega1"
+                class="bg-gray-200 grid  px-4 py-5 text-gray-900 dark:text-white xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-4 ">
+                <ul id="software-dropdown" class="font-bold">Software
+                    <li>
+                        <a href="#"
+                            class="block mt-3 px-0 py-2 text-[14px] font-normal rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                            App
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">AI
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Outlook
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">OneDrive
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Teams
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">OneNote
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Edge
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Skype
+                        </a></li>
+                </ul>
+                <ul class="font-bold">PCs & Devices
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Computers
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Shop
+                            Xbox
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Accessories
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">VR
+                            & mixed
+                            reality
+                        </a></li>
+                </ul>
+                <ul class="font-bold">Entertainment
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Xbox
+                            Game Pass
+                            Ultimate
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">PC
+                            Game Pass
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Xbox
+                            games
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">PC
+                            games
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                            digital games
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Movies
+                            & TV
+                        </a></li>
+                </ul>
+                <ul class="font-bold">Business
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Cloud
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Security
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Dynamics
+                            365
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            365
+                            for business
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Power Platform
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Windows
+                            365
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Industry
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Small
+                            Business
+                        </a></li>
+                </ul>
+                <ul class="font-bold">Developer & IT
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Azure
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Developer
+                            Center
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Documentation
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Learn
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Tech
+                            Community
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Azure
+                            Marketplace
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">AppSource
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Visual
+                            Studio
+                        </a></li>
+                </ul>
+                <ul class="font-bold">Other
+                    <li>
+                        <a href="#"
+                            class="mt-3 px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Rewards
+                        </a>
+                    </li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Free
+                            downloads
+                            & security
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Education
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Trade-in
+                            for
+                            Cash
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Gift
+                            cards
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Students
+                            and
+                            parents deals
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Licensing
+                        </a></li>
+                    <li><a href="#"
+                            class="px-0 py-2 text-[14px] font-normal block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Microsoft
+                            Experience Center
+                        </a></li>
+                </ul>
+            </div>
+            </svg></a>
+            <div id="mega2" class="text-center bg-gray-300 py-2 text-[14px] hover:underline"><a href="#">VIEW
+                    SITEMAP<svg class="inline-block w-5 h-5 text-gray-500 group-hover:pl-2"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg></a></div>
+        </div>
+
+    </nav>
+    <div class=" bg-white">
+        <!-- start cong -->
+        <div class="bg-[#0067B8] text-white text-center pt-4 pb-4">
+            <a href="" class="hover:underline group ">Congratulate and celebrate your grad with tech
+                that’s as
+                impressive as they are. Shop gift ideas <svg
+                    class="inline-block w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:transition-transform "
+                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg></a>
+        </div>
+        <!-- end cong -->
+        <!-- start swiper1 -->
+        <div>
+            <div id="slider-1" class="md:relative flex flex-col flex-wrap ">
+                <img src="./images/2.jpg " alt="..." class="h-[350px] md:h-[450px] object-cover">
+                <div class="md:absolute md:top-10 md:left-20 md:w-2/5 bg-white px-10 py-10">
+                    <p class="text-3xl font-bold sm:text-black">Microsoft 365</p>
+                    <p class="text-xl pt-2 mb-10 leading-none sm:text-black">Turn your ideas into reality,
+                        stay
+                        safer online and
+                        off,
+                        and
+                        focus on what matters most with Microsoft 365 apps</p>
+                    <a href="#"
+                        class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">for
+                        1 person</a>
+                </div>
+            </div>
+
+            <div id="slider-2" class="md:relative flex flex-col flex-wrap ">
+                <img src="./images/3.webp " alt="..." class="h-[350px] md:h-[450px] object-cover">
+                <div class="md:absolute  md:top-10 md:left-20 md:w-2/5  bg-white px-10 py-10">
+                    <p class="text-3xl font-bold  sm:text-black">Save on Surface</p>
+                    <p class="text-xl pt-2 mb-10 leading-none sm:text-black">Find a great deal on
+                        select Surface devices built for all the ways you create, work, play, and connect Shop Surface
+                        deals</p>
+                    <a href="#"
+                        class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Shop
+                        Surface deals</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="flex justify-between w-12 mx-auto pb-2 bg-white">
+            <button id="sButton1" onclick="sliderButton1('A')" class="bg-purple-400 rounded-full w-4 pb-2 "></button>
+            <button id="sButton2" onclick="sliderButton2('A') " class="bg-purple-400 rounded-full w-4 p-2"></button>
+        </div>
+        <!-- end swiper1 -->
+        <!-- start choose product -->
+        <div class="flex flex-row flex-wrap flex-grow-0 justify-center px-10 my-4 align-middle bg-white">
+            <div class="mx-5 my-5">
+                <img src="./images/product/11.webp" class="mx-auto" alt="">
+                <a href="#" class="flex flex-grow-0">Shop Surface devices</a>
+            </div>
+            <div class="mx-5 my-5">
+                <img src="./images/product/12.webp" class="mx-auto" alt="">
+                <a href="#" class="flex flex-grow-0 ">Choose your Microsoft 365</a>
+            </div>
+            <div class="mx-5 my-5">
+                <img src="./images/product/13.webp" class="mx-auto" alt="">
+                <a href="#" class="flex flex-grow-0">Buy Xbox games and consoles</a>
+            </div>
+            <div class="mx-5 my-5">
+                <img src="./images/product/12.webp" class="mx-auto" alt="">
+                <a href="#" class=" w-auto">Get Windows 11</a>
+            </div>
+            <div class="mx-5 my-5">
+                <img src="./images/product/14.webp" class="mx-auto" alt="">
+                <a href="#" class="w-auto">Shop for accessories</a>
+            </div>
+            <div class="mx-5 my-5">
+                <img src="./images/product/15.webp" class="mx-auto" alt="">
+                <a href="#" class=" w-auto">Shop Business</a>
+            </div>
+        </div>
+        <!-- end choose product -->
+        <div class="space"></div>
+        <!-- start shop -->
+        <div class="flex flex-row flex-wrap flex-grow-0 justify-center my-4 align-middle">
+            <div class="mx-3 my-2 md:w-1/5 sm:w-1/3">
+                <a href=""><img src="./images/shop/11.webp" class="mx-auto" alt="">
+                    <h1 class="font-bold flex flex-grow-0 my-2">Save up to $300 on Surface Pro 9</h1>
+                    <p class="flex flex-grow-0">The tablet flexibility you want and the laptop performance you need—all
+                        in one ultra-portable device. Offer ends 5/21.</p>
+                    <a href="#" class="font-bold flex flex-grow-0 my-4">Shop Surface Pro 9</a>
+                </a>
+            </div>
+            <div class="mx-3 my-2 md:w-1/5 sm:w-1/3">
+                <a href=""><img src="./images/shop/12.webp" class="mx-auto" alt="">
+                    <h1 class="font-bold flex flex-grow-0 my-2">Save up to $300 on Surface Laptop 5</h1>
+                    <p class="flex flex-grow-0"> Sophisticated style and multitasking speed powered by 12th Gen Intel®
+                        Core.
+                        Offer ends 5/29.</p>
+                    <a href="#" class="font-bold flex flex-grow-0 my-4">Shop Surface Laptop 5</a>
+                </a>
+            </div>
+            <div class="mx-3 my-2 md:w-1/5 sm:w-1/3">
+                <a href=""><img src="./images/shop/13.jfif" class="mx-auto" alt="">
+                    <h1 class="font-bold flex flex-grow-0 my-2">Xbox Series X</h1>
+                    <p class="flex flex-grow-0"> The fastest, most powerful Xbox ever.</p>
+                    <a href="#" class="font-bold flex flex-grow-0 my-4">Shop Xbox Series X</a>
+                </a>
+            </div>
+            <div class="mx-3 my-2 md:w-1/5 sm:w-1/3">
+                <a href=""><img src="./images/shop/14.webp" class="mx-auto" alt="">
+                    <h1 class="font-bold flex flex-grow-0 my-2">Xbox Game Pass Ultimate</h1>
+                    <p class="flex flex-grow-0">Xbox Live Gold and hundreds of high-quality console and PC games. Play
+                        together with friends and discover your next
+                        favorite game.</p>
+                    <a href="#" class="font-bold flex flex-grow-0 my-4">Join now</a>
+                </a>
+            </div>
+        </div>
+        <!-- end shop -->
+        <div class="space"></div>
+        <!-- start xbox -->
+        <div class="md:relative flex flex-col flex-wrap ">
+            <img src="./images/xbox/13.jfif" alt="..." class="h-[350px] md:h-[450px] object-fill">
+            <div class="md:absolute  md:top-10 md:left-20 md:w-2/5 px-10 py-10">
+                <p class="text-2xl font-bold md:text-white sm:text-black my-3">Xbox Series S - Gilded Hunter Bundle</p>
+                <p class="text-xl mb-10 leading-none md:text-white sm:text-black">Get Xbox Series S, nine in-game
+                    cosmetics, and virtual currency</p>
+                <a href="#"
+                    class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Shop
+                    now</a>
+            </div>
+        </div>
+        <!-- end xbox -->
+        <div class="space"></div>
+
+        <!-- start business -->
+        <h1 class="font-extrabold text-[24px] mx-4 my-3">For business</h1>
+        <div class="flex flex-row flex-wrap flex-grow-0 justify-center my-4 align-middle">
+
+            <div class="mx-3 my-2 md:w-1/5 sm:w-1/3">
+                <a href=""><img src="./images/business/11.webp" class="mx-auto" alt="">
+                    <h1 class="font-bold flex flex-grow-0 my-2">Save up to $250 on Surface Laptop 5 for Business</h1>
+                    <p class="flex flex-grow-0">Lightning-fast performance, built-in security and sleek portability
+                        designed for your small business. Offer ends 5/31.</p>
+                    <a href="#" class="font-bold flex flex-grow-0 my-4">Shop now</a>
+                </a>
+            </div>
+            <div class="mx-3 my-2 md:w-1/5 sm:w-1/3">
+                <a href=""><img src="./images/business/12.webp" class="mx-auto" alt="">
+                    <h1 class="font-bold flex flex-grow-0 my-2">Microsoft 365 for Business</h1>
+                    <p class="flex flex-grow-0">For a limited time, get 15% off Microsoft 365 Business Standard or
+                        Microsoft 365 Business Premium. Annual Subscriptions
+                        only. Terms and conditions apply.</p>
+                    <a href="#" class="font-bold flex flex-grow-0 my-4">Buy now</a>
+                </a>
+            </div>
+            <div class="mx-3 my-2 md:w-1/5 sm:w-1/3">
+                <a href=""><img src="./images/business/13.jfif" class="mx-auto" alt="">
+                    <h1 class="font-bold flex flex-grow-0 my-2">Join the era of AI</h1>
+                    <p class="flex flex-grow-0">Create, communicate, and code with the latest Microsoft AI solutions.
+                    </p>
+                    <a href="#" class="font-bold flex flex-grow-0 my-4">Explore AI Solutions</a>
+                </a>
+            </div>
+            <div class="mx-3 my-2 md:w-1/5 sm:w-1/3">
+                <a href=""><img src="./images/business/14.webp" class="mx-auto" alt="">
+                    <h1 class="font-bold flex flex-grow-0 my-2">Join Microsoft Build—digitally or in person</h1>
+                    <p class="flex flex-grow-0">This May 23-25, engage in interactive, discussion-based activities in
+                        real time while connecting with and learning from
+                        experts in the developer community.</p>
+                    <a href="#" class="font-bold flex flex-grow-0 my-4">Register today for Microsoft Build</a>
+                </a>
+            </div>
+        </div>
+        <!-- end business -->
+        <div class="space"></div>
+        <!-- start swiper2 -->
+        <div class="relative">
+            <div id="slider-b1" class="md:relative flex flex-col flex-wrap ">
+                <img src="./images/11.webp" alt="..." class="h-[350px] md:h-[450px] object-cover">
+                <div class="md:absolute md:top-10 md:left-20 md:w-2/5 bg-white px-10 py-10">
+                    <p class="text-3xl font-bold sm:text-black">Microsoft 365</p>
+                    <p class="text-xl pt-2 mb-10 leading-none sm:text-black">Turn your ideas into reality,
+                        stay
+                        safer online and
+                        off,
+                        and
+                        focus on what matters most with Microsoft 365 apps</p>
+                    <a href="#"
+                        class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">for
+                        1 person</a>
+                </div>
+            </div>
+
+            <div id="slider-b2" class="md:relative flex flex-col flex-wrap">
+                <img src="./images/12.webp" alt="..." class="h-[350px] md:h-[450px] object-cover">
+                <div class="md:absolute  md:top-10 md:left-20 md:w-2/5  bg-white px-10 py-10">
+                    <p class="text-3xl font-bold  sm:text-black">Save on Surface</p>
+                    <p class="text-xl pt-2 mb-10 leading-none sm:text-black">Find a great deal on
+                        select
+                        Surface devices built
+                        for
+                        all the
+                        ways you create, work, play, and connect
+                        Shop Surface deals</p>
+                    <a href="#"
+                        class="bg-purple-800 py-4 px-8 text-white font-bold uppercase text-xs rounded hover:bg-gray-200 hover:text-gray-800">Shop
+                        Surface deals</a>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="flex justify-between w-12 mx-auto pb-2 bg-white">
+            <button id="sButtonb1" onclick="sliderButton1('B')" class="bg-purple-400 rounded-full w-4 pb-2 "></button>
+            <button id="sButtonb2" onclick="sliderButton2('B') " class="bg-purple-400 rounded-full w-4 p-2"></button>
+        </div>
+        <!-- end swiper2 -->
+        <div class="space"></div>
+        <!-- start contact -->
+        <div class=" flex flex-row ">
+            <h1 class="inline-block mx-10 my-auto">Follow Microsoft</h1>
+            <a href="#" class="inline-block"><img src="./icon/11.webp" class="w-[32px] h-[32px]" alt=""></a>
+            <a href="#" class="inline-block"><img src="./icon/12.webp" class="w-[32px] h-[32px]" alt=""></a>
+            <a href="#" class="inline-block"><img src="./icon/13.webp" class="w-[32px] h-[32px]" alt=""></a>
+        </div>
+        <!--start topButton -->
+        <button x-data="topBtn" @click="scrolltoTop" id="topButton"
+            class="w-[140px] h-[40px] fixed z-10 hidden p-3 bg-gray-400 rounded-[5%] shadow-md bottom-[460px] right-4 animate-bounce ">
+            <svg class="w-7 h-7 inline-block pr-3 pb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18">
+                </path>
+            </svg>Back to Top
+        </button>
+        <!-- end topButton -->
+        <!-- end contact -->
+        <div class="space"></div>
+        <!-- start footer -->
+        <footer class="bg-[#f2f2f2] text-gray-700 text-left px-14 py-5">
+            <div class="w-full">
+                <ul class="flex flex-row flex-wrap">
+                    <li class="sm:w-full md:w-1/3 lg:w-1/6 font-bold">What's new
+                        <ul class="font-normal text-[12px]">
+                            <li class="py-2">Surface Pro 9</li>
+                            <li class="py-2">Surface Laptop 5</li>
+                            <li class="py-2">Surface Studio 2+</li>
+                            <li class="py-2">Surface Laptop Go 2</li>
+                            <li class="py-2">Surface Laptop Studio</li>
+                            <li class="py-2">Surface Go 3</li>
+                            <li class="py-2">Microsoft 365</li>
+                            <li class="py-2">Windows 11 apps</li>
+                        </ul>
+                    </li>
+                    <li class="sm:w-full md:w-1/3 lg:w-1/6 font-bold">Microsoft Store
+                        <ul class="font-normal text-[12px]">
+                            <li class="py-2">Account profile</li>
+                            <li class="py-2">Download Center</li>
+                            <li class="py-2">Microsoft Store support</li>
+                            <li class="py-2">Returns</li>
+                            <li class="py-2">Order tracking</li>
+                            <li class="py-2">Trade-in for Cash</li>
+                            <li class="py-2">Microsoft Store Promise</li>
+                            <li class="py-2">Flexible Payments</li>
+                        </ul>
+                    </li>
+                    <li class="sm:w-full md:w-1/3 lg:w-1/6 font-bold">Education
+                        <ul class="font-normal text-[12px]">
+                            <li class="py-2">Microsoft in education</li>
+                            <li class="py-2">Devices for education</li>
+                            <li class="py-2">Microsoft Teams for Education</li>
+                            <li class="py-2">Microsoft 365 Education</li>
+                            <li class="py-2">How to buy for your school</li>
+                            <li class="py-2">Educator training and development</li>
+                            <li class="py-2">Deals for students and parents</li>
+                            <li class="py-2">Azure for students</li>
+                        </ul>
+                    </li>
+                    <li class="sm:w-full md:w-1/3 lg:w-1/6 font-bold">Business
+                        <ul class="font-normal text-[12px]">
+                            <li class="py-2">Microsoft Cloud</li>
+                            <li class="py-2">Microsoft Security</li>
+                            <li class="py-2">Dynamics 365</li>
+                            <li class="py-2">Microsoft 365</li>
+                            <li class="py-2">Microsoft Power Platform</li>
+                            <li class="py-2">Microsoft Teams</li>
+                            <li class="py-2">Microsoft Industry</li>
+                            <li class="py-2">Small Business</li>
+                        </ul>
+                    </li>
+                    <li class="sm:w-full md:w-1/3 lg:w-1/6 font-bold">Developer & IT
+                        <ul class="font-normal text-[12px]">
+                            <li class="py-2">Azure</li>
+                            <li class="py-2">Developer Center</li>
+                            <li class="py-2">Documentation</li>
+                            <li class="py-2">Microsoft Learn</li>
+                            <li class="py-2">Microsoft Tech Community</li>
+                            <li class="py-2">Azure Marketplace</li>
+                            <li class="py-2">AppSource</li>
+                            <li class="py-2">Visual Studio</li>
+                        </ul>
+                    </li>
+                    <li class="sm:w-full md:w-1/3 lg:w-1/6 font-bold">Company
+                        <ul class="font-normal text-[12px]">
+                            <li class="py-2">Careers</li>
+                            <li class="py-2">About Microsoft</li>
+                            <li class="py-2">Company news</li>
+                            <li class="py-2">Privacy at Microsoft</li>
+                            <li class="py-2">Investors</li>
+                            <li class="py-2">Diversity and inclusion</li>
+                            <li class="py-2">Accessibility</li>
+                            <li class="py-2">Sustainability</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <br>
+            <div class="flex flex-row flex-wrap">
+                <div class="sm:w-1/2 lg:w-full xl:w-auto">
+                    <ul class="font-normal text-[12px] flex flex-row flex-wrap">
+                        <li class="py-2 px-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-globe-americas inline-block" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM2.04 4.326c.325 1.329 2.532 2.54 3.717 3.19.48.263.793.434.743.484-.08.08-.162.158-.242.234-.416.396-.787.749-.758 1.266.035.634.618.824 1.214 1.017.577.188 1.168.38 1.286.983.082.417-.075.988-.22 1.52-.215.782-.406 1.48.22 1.48 1.5-.5 3.798-3.186 4-5 .138-1.243-2-2-3.5-2.5-.478-.16-.755.081-.99.284-.172.15-.322.279-.51.216-.445-.148-2.5-2-1.5-2.5.78-.39.952-.171 1.227.182.078.099.163.208.273.318.609.304.662-.132.723-.633.039-.322.081-.671.277-.867.434-.434 1.265-.791 2.028-1.12.712-.306 1.365-.587 1.579-.88A7 7 0 1 1 2.04 4.327Z" />
+                            </svg>English (United States)
+                        </li>
+                        <li class="py-2 px-2">
+                            <svg role="img" class="inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14"
+                                xml:space="preserve" height="16" width="43">
+                                <title>California Consumer Privacy Act (CCPA) Opt-Out Icon</title>
+                                <path d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z"
+                                    style="fill-rule:evenodd;clip-rule:evenodd;fill:#fff"></path>
+                                <path
+                                    d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z"
+                                    style="fill-rule:evenodd;clip-rule:evenodd;fill:#06f"></path>
+                                <path
+                                    d="M24.6 4c.2.2.2.6 0 .8L22.5 7l2.2 2.2c.2.2.2.6 0 .8-.2.2-.6.2-.8 0l-2.2-2.2-2.2 2.2c-.2.2-.6.2-.8 0-.2-.2-.2-.6 0-.8L20.8 7l-2.2-2.2c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0l2.2 2.2L23.8 4c.2-.2.6-.2.8 0z"
+                                    style="fill:#fff"></path>
+                                <path
+                                    d="M12.7 4.1c.2.2.3.6.1.8L8.6 9.8c-.1.1-.2.2-.3.2-.2.1-.5.1-.7-.1L5.4 7.7c-.2-.2-.2-.6 0-.8.2-.2.6-.2.8 0L8 8.6l3.8-4.5c.2-.2.6-.2.9 0z"
+                                    style="fill:#06f"></path>
+                            </svg>Your Privacy Choices
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="font-normal text-[12px] flex flex-row flex-wrap">
+                        <li class="py-2 px-2">Sitemap</li>
+                        <li class="py-2 px-2">Contact Microsoft</li>
+                        <li class="py-2 px-2">Privacy</li>
+                        <li class="py-2 px-2">Manage cookies</li>
+                        <li class="py-2 px-2">Terms of use</li>
+                        <li class="py-2 px-2">Trademarks</li>
+                        <li class="py-2 px-2">Safety & eco</li>
+                        <li class="py-2 px-2">Recycling</li>
+                        <li class="py-2 px-2">About our ads</li>
+                        <li class="py-2 px-2">© Microsoft 2023</li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <!-- end footer -->
+        <!-- start design -->
+        <div class="bg-gray-600 text-white px-3 py-2 flex flex-row text-sm ">
+            <a class="block mx-10 group" href=""><img
+                    class="w-20 h-20 rounded-full transition-transform group-hover:translate-x-1 group-hover:transition-transform"
+                    src="./icon/alilogo.png" alt=""></a>
+            <div class="flex flex-col justify-around">
+                <p>Designed By: Ali Bazmara</p>
+                <p>
+                    copy of Microsoft first page
+                </p>
+            </div>
+
+        </div>
+        <!-- end design -->
+    </div>
+    <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script>
+        let megaMenuBtn = document.getElementById("mega-menu-full-dropdown-button")
+        let divMegaMenu = document.getElementById("mega-menu-full-dropdown")
+        let divMegaMenuSm = document.getElementById("mega-menu-full")
+
+        window.addEventListener("resize", closeDivMegamenu)
+        function closeDivMegamenu() {
+            if (window.outerWidth < 750) {
+                divMegaMenu.classList.add("hidden")
+            }
+        }
+        document.addEventListener("click", function (event) {
+            if (megaMenuBtn.contains(event.target)) {
+                if (window.outerWidth >= 750) {
+                    divMegaMenu.classList.toggle("block")
+                }
+                else {
+                    divMegaMenu.classList.add("hidden")
+                }
+            }
+            else {
+                if (!divMegaMenu.contains(event.target)) {
+                    divMegaMenu.classList.remove("bloak")
+                    divMegaMenu.classList.add("hidden")
+                }
+            }
+
+            if (menuBtn.contains(event.target)) {
+
+                divMegaMenuSm.classList.add("block")
+            }
+            else {
+                if (!divMegaMenuSm.contains(event.target)) {
+                    divMegaMenuSm.classList.remove("bloak")
+                    divMegaMenuSm.classList.add("hidden")
+                    document.getElementById("closeIcon").classList.remove("block")
+                    document.getElementById("menuIcon").classList.remove("hidden")
+                    document.getElementById("closeIcon").classList.add("hidden")
+                    document.getElementById("menuIcon").classList.add("block")
+                }
+            }
+
+        })
+
+        let srh = document.getElementById("searchBtn")
+        srh.addEventListener("click", function () {
+            document.getElementById("searchDiv").classList.remove("hidden")
+            document.getElementById("searchDiv").classList.add("block")
+        })
+
+        let cnl = document.getElementById("cancelBtn")
+        cnl.addEventListener("click", function () {
+            document.getElementById("searchDiv").classList.remove("block")
+            document.getElementById("searchDiv").classList.add("hidden")
+        })
+
+        function showOnClick(itemId1, itemId2) {
+            document.getElementById(itemId2).classList.toggle("hidden")
+        }
+        let mnBtn = document.getElementById("menuBtn")
+        mnBtn.addEventListener("click", function () {
+            document.getElementById("closeIcon").classList.toggle("hidden")
+            document.getElementById("menuIcon").classList.toggle("hidden")
+
+
+        })
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('topBtn', () => ({
+                scrolltoTop() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            }));
+        });
+
+        const topBtn = document.getElementById("topButton");
+        window.onscroll = () => {
+            (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ?
+                topBtn.classList.remove("hidden") : topBtn.classList.add("hidden");
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
